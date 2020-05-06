@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 
 import imgLogonBackground from '../../assets/sign-in-background.png';
@@ -16,6 +16,27 @@ export const Content = styled.div`
   width: 100%;
   max-width: 700px;
   text-align: center;
+`;
+
+export const Background = styled.div`
+  flex: 1;
+  background: url(${imgLogonBackground}) no-repeat center;
+  background-size: cover;
+`;
+
+const appearFromLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+`;
+
+export const AnimationContainer = styled.div`
+  animation: ${appearFromLeft} 0.5s;
 
   form {
     margin: 80px auto;
@@ -58,10 +79,4 @@ export const Content = styled.div`
       color: ${shade(0.3, '#ff9000')};
     }
   }
-`;
-
-export const Background = styled.div`
-  flex: 1;
-  background: url(${imgLogonBackground}) no-repeat center;
-  background-size: cover;
 `;
